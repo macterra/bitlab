@@ -1,5 +1,20 @@
 # nand
-Minimal programming language
+
+Exploring a minimal universal language where every finite bitstring is a valid
+program. The new [NAND tape prototype](NAND_TAPE.md) provides a complete execution
+model, a Python interpreter, and a constructive translation from binary Turing
+machines. It is a baseline for minimizing the language, not a claim of optimality.
+
+```sh
+python3 nand_tape.py 0 --decode
+python3 nand_tape.py 11 --steps 20
+python3 -m unittest -v test_nand_tape
+```
+
+## Original expression-language experiment
+
+The notation below belongs to the earlier `nand.py` interpreter. It is separate
+from the NAND tape prototype.
 
 ```
 00 = 0
