@@ -200,3 +200,9 @@ The subsequent [bit-by-bit combinator experiment](BITFOLD.md) holds this separat
 program/input list contract fixed and measures self-interpreters in their own
 native encoding. Its best emitted result is 1,339 bits; the 174-bit candidate
 above remains unchanged.
+
+The subsequent [equivalence-rewrite search](REWRITE_SEARCH.md) adds inverse beta
+steps, helper factoring, applied-parameter exchange, larger retained intermediates,
+and a certified alternative starting form. Its three bounded runs generated
+912,292 candidates in total (with overlap between runs) and found no improvement
+below 174 bits. The original contraction-only result above remains reproducible.

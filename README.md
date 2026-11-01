@@ -11,15 +11,20 @@ completes nested self-interpretation. It is a six-bit adapter around Tromp's
 168-bit parser, **not a new smallest-interpreter record**. Its input contract is
 explicit and differs from a single-stream universal machine.
 
-The latest [bit-by-bit combinator experiment](BITFOLD.md) tested a different
+The [bit-by-bit combinator experiment](BITFOLD.md) tested a different
 execution rule with no structured source parser. Its best emitted self-interpreter
 is 1,339 native bits across 24 measured configurations, so it did not improve on
 174 bits. Universality certificates and the negative result are preserved.
 
+The latest [equivalence-rewrite search](REWRITE_SEARCH.md) explores helper
+factoring and larger intermediate expressions with replayable beta proofs.
+Three bounded runs generated 912,292 candidates (overlapping between runs);
+the best remains 174 bits.
+
 ```sh
 python3 functional_candidates.py --run 0010 --input 101101
 python3 functional_candidates.py --run '' --input 101101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites
 ```
 
 | Candidate | Self-interpreter | Documentation |
@@ -44,7 +49,7 @@ Regenerate the functional artifact and its measurement report:
 python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-The 42 tests cover differential execution, exhaustive short sources, large tape
+The 49 tests cover differential execution, exhaustive short sources, large tape
 branch addresses, and reproducible artifacts. The functional suite completes two
 nested interpretation levels; the tape suites check bounded self-application
 prefixes. The functional search found no reduction below 174 bits within its

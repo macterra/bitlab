@@ -1,0 +1,618 @@
+{
+  "seed_bits": 174,
+  "result_bits": 174,
+  "rounds": 12,
+  "beam": 64,
+  "slack": 32,
+  "subsets": false,
+  "policy": "size",
+  "max_generated": 500000,
+  "start_proofs": [],
+  "stop_reason": "round limit",
+  "generated": 130323,
+  "rules": {
+    "contract": 652,
+    "expand": 129652,
+    "join": 19
+  },
+  "history": [
+    {
+      "round": 1,
+      "generated": 171,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 176,
+      "frontier_max": 181
+    },
+    {
+      "round": 2,
+      "generated": 9499,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 174,
+      "frontier_max": 183
+    },
+    {
+      "round": 3,
+      "generated": 21257,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 176,
+      "frontier_max": 181
+    },
+    {
+      "round": 4,
+      "generated": 31206,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 176,
+      "frontier_max": 182
+    },
+    {
+      "round": 5,
+      "generated": 43520,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 178,
+      "frontier_max": 183
+    },
+    {
+      "round": 6,
+      "generated": 54913,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 179,
+      "frontier_max": 183
+    },
+    {
+      "round": 7,
+      "generated": 67575,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 179,
+      "frontier_max": 185
+    },
+    {
+      "round": 8,
+      "generated": 80217,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 181,
+      "frontier_max": 186
+    },
+    {
+      "round": 9,
+      "generated": 92929,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 179,
+      "frontier_max": 188
+    },
+    {
+      "round": 10,
+      "generated": 105691,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 180,
+      "frontier_max": 186
+    },
+    {
+      "round": 11,
+      "generated": 118100,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 182,
+      "frontier_max": 187
+    },
+    {
+      "round": 12,
+      "generated": 130323,
+      "retained": 64,
+      "best_bits": 174,
+      "frontier_min": 183,
+      "frontier_max": 188
+    }
+  ],
+  "proof": [],
+  "seed_sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a",
+  "sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a",
+  "runs": [
+    {
+      "seed_bits": 174,
+      "result_bits": 174,
+      "rounds": 12,
+      "beam": 64,
+      "slack": 32,
+      "subsets": false,
+      "policy": "size",
+      "max_generated": 500000,
+      "start_proofs": [],
+      "stop_reason": "round limit",
+      "generated": 130323,
+      "rules": {
+        "contract": 652,
+        "expand": 129652,
+        "join": 19
+      },
+      "history": [
+        {
+          "round": 1,
+          "generated": 171,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 181
+        },
+        {
+          "round": 2,
+          "generated": 9499,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 174,
+          "frontier_max": 183
+        },
+        {
+          "round": 3,
+          "generated": 21257,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 181
+        },
+        {
+          "round": 4,
+          "generated": 31206,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 182
+        },
+        {
+          "round": 5,
+          "generated": 43520,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 178,
+          "frontier_max": 183
+        },
+        {
+          "round": 6,
+          "generated": 54913,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 183
+        },
+        {
+          "round": 7,
+          "generated": 67575,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 185
+        },
+        {
+          "round": 8,
+          "generated": 80217,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 181,
+          "frontier_max": 186
+        },
+        {
+          "round": 9,
+          "generated": 92929,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 188
+        },
+        {
+          "round": 10,
+          "generated": 105691,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 186
+        },
+        {
+          "round": 11,
+          "generated": 118100,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 182,
+          "frontier_max": 187
+        },
+        {
+          "round": 12,
+          "generated": 130323,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 183,
+          "frontier_max": 188
+        }
+      ],
+      "proof": [],
+      "seed_sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a",
+      "sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a"
+    },
+    {
+      "seed_bits": 174,
+      "result_bits": 174,
+      "rounds": 16,
+      "beam": 64,
+      "slack": 192,
+      "subsets": true,
+      "policy": "layers",
+      "max_generated": 300000,
+      "start_proofs": [],
+      "stop_reason": "round limit",
+      "generated": 281969,
+      "rules": {
+        "contract": 1418,
+        "expand": 280522,
+        "join": 29
+      },
+      "history": [
+        {
+          "round": 1,
+          "generated": 212,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 324
+        },
+        {
+          "round": 2,
+          "generated": 12450,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 174,
+          "frontier_max": 350
+        },
+        {
+          "round": 3,
+          "generated": 31333,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 351
+        },
+        {
+          "round": 4,
+          "generated": 52557,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 338
+        },
+        {
+          "round": 5,
+          "generated": 72742,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 178,
+          "frontier_max": 311
+        },
+        {
+          "round": 6,
+          "generated": 93687,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 242
+        },
+        {
+          "round": 7,
+          "generated": 112981,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 243
+        },
+        {
+          "round": 8,
+          "generated": 130946,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 244
+        },
+        {
+          "round": 9,
+          "generated": 148525,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 244
+        },
+        {
+          "round": 10,
+          "generated": 166127,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 181,
+          "frontier_max": 244
+        },
+        {
+          "round": 11,
+          "generated": 184389,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 183,
+          "frontier_max": 247
+        },
+        {
+          "round": 12,
+          "generated": 203500,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 182,
+          "frontier_max": 249
+        },
+        {
+          "round": 13,
+          "generated": 223362,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 183,
+          "frontier_max": 246
+        },
+        {
+          "round": 14,
+          "generated": 242571,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 181,
+          "frontier_max": 248
+        },
+        {
+          "round": 15,
+          "generated": 262489,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 184,
+          "frontier_max": 247
+        },
+        {
+          "round": 16,
+          "generated": 281969,
+          "retained": 64,
+          "best_bits": 174,
+          "frontier_min": 182,
+          "frontier_max": 249
+        }
+      ],
+      "proof": [],
+      "seed_sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a",
+      "sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a"
+    },
+    {
+      "seed_bits": 174,
+      "result_bits": 174,
+      "rounds": 16,
+      "beam": 128,
+      "slack": 64,
+      "subsets": true,
+      "policy": "layers",
+      "max_generated": 500000,
+      "start_proofs": [
+        [
+          {
+            "rule": "expand",
+            "path": [
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              1,
+              2,
+              2
+            ],
+            "replacement": "0100010110101010"
+          },
+          {
+            "rule": "expand",
+            "path": [
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              2,
+              1,
+              1,
+              2,
+              2,
+              1,
+              1,
+              2
+            ],
+            "replacement": "0100000001011101111001101110110"
+          },
+          {
+            "rule": "expand",
+            "path": [
+              1,
+              2,
+              1,
+              1,
+              1,
+              1,
+              2,
+              1,
+              2,
+              1,
+              1,
+              2,
+              2,
+              1,
+              1,
+              2,
+              1
+            ],
+            "replacement": "01000000000101110111100110111010"
+          }
+        ]
+      ],
+      "stop_reason": "candidate limit",
+      "generated": 500000,
+      "rules": {
+        "contract": 2689,
+        "expand": 497220,
+        "join": 91
+      },
+      "history": [
+        {
+          "round": 1,
+          "generated": 427,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 208
+        },
+        {
+          "round": 2,
+          "generated": 24848,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 174,
+          "frontier_max": 224
+        },
+        {
+          "round": 3,
+          "generated": 54673,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 236
+        },
+        {
+          "round": 4,
+          "generated": 85593,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 176,
+          "frontier_max": 238
+        },
+        {
+          "round": 5,
+          "generated": 117339,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 178,
+          "frontier_max": 238
+        },
+        {
+          "round": 6,
+          "generated": 149723,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 238
+        },
+        {
+          "round": 7,
+          "generated": 182694,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 238
+        },
+        {
+          "round": 8,
+          "generated": 216481,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 182,
+          "frontier_max": 238
+        },
+        {
+          "round": 9,
+          "generated": 250779,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 238
+        },
+        {
+          "round": 10,
+          "generated": 286330,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 181,
+          "frontier_max": 238
+        },
+        {
+          "round": 11,
+          "generated": 322211,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 182,
+          "frontier_max": 238
+        },
+        {
+          "round": 12,
+          "generated": 358405,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 238
+        },
+        {
+          "round": 13,
+          "generated": 395154,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 182,
+          "frontier_max": 238
+        },
+        {
+          "round": 14,
+          "generated": 432303,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 179,
+          "frontier_max": 238
+        },
+        {
+          "round": 15,
+          "generated": 469137,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 238
+        },
+        {
+          "round": 16,
+          "generated": 500000,
+          "retained": 128,
+          "best_bits": 174,
+          "frontier_min": 180,
+          "frontier_max": 238
+        }
+      ],
+      "proof": [],
+      "seed_sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a",
+      "sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a"
+    }
+  ],
+  "generated_across_runs": 912292,
+  "search_files": [
+    "functional.py",
+    "functional_candidates.py",
+    "functional_rewrites.py"
+  ],
+  "search_source_sha256": "b7cfd63133be471213eee94acdf958a172bf9406dddecd5c71f48dbd5125d98e",
+  "search_source_bytes": 30640
+}
