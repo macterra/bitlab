@@ -5,21 +5,27 @@ program. Our main benchmark is the length of a language's self-interpreter,
 measured in bits, with explicit input framing and a companion measurement of
 the reference implementation.
 
-The latest research result is a [174-bit functional self-interpreter](FUNCTIONAL.md).
+The smallest measured candidate is a [174-bit functional self-interpreter](FUNCTIONAL.md).
 It gives every finite bitstring a defined lambda-calculus computation and
 completes nested self-interpretation. It is a six-bit adapter around Tromp's
 168-bit parser, **not a new smallest-interpreter record**. Its input contract is
 explicit and differs from a single-stream universal machine.
 
+The latest [bit-by-bit combinator experiment](BITFOLD.md) tested a different
+execution rule with no structured source parser. Its best emitted self-interpreter
+is 1,339 native bits across 24 measured configurations, so it did not improve on
+174 bits. Universality certificates and the negative result are preserved.
+
 ```sh
 python3 functional_candidates.py --run 0010 --input 101101
 python3 functional_candidates.py --run '' --input 101101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold
 ```
 
 | Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
 | Total functional decoder | **174 bits** | [Contract, provenance, and search results](FUNCTIONAL.md) |
+| Best bit-by-bit combinator variant | 1,339 bits | [Certificates and bounded search](BITFOLD.md) |
 | Compact binary addresses | **25,260 bits** | [Specification and comparison](COMPACT_TAPE.md) |
 | Original unary addresses | 741,267 bits | [Language](NAND_TAPE.md), [self-interpreter](SELF_INTERPRETER.md) |
 
@@ -38,7 +44,7 @@ Regenerate the functional artifact and its measurement report:
 python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-The 34 tests cover differential execution, exhaustive short sources, large tape
+The 42 tests cover differential execution, exhaustive short sources, large tape
 branch addresses, and reproducible artifacts. The functional suite completes two
 nested interpretation levels; the tape suites check bounded self-application
 prefixes. The functional search found no reduction below 174 bits within its

@@ -1,0 +1,14 @@
+{
+  "constants": "SK",
+  "swapped": false,
+  "reverse": false,
+  "shared": true,
+  "optimize": true,
+  "native_bits": 1799,
+  "lambda_bits": 161,
+  "sha256": "9b860edfaa35435a99fd8d0dce0ec7868e7de95ca6314b9c546467fecdb2b1d6",
+  "words": {
+    "K": "11100",
+    "S": "11111000"
+  }
+}

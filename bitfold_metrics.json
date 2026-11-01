@@ -1,0 +1,507 @@
+{
+  "max_word_length": 10,
+  "normalization_budget": 10000,
+  "contract": "Separate program/input boolean-pair lists; bit-list output",
+  "reference_files": [
+    "functional.py",
+    "bitfold.py"
+  ],
+  "reference_python_bytes": 20443,
+  "reference_python_sha256": "455ede9014d96cc7e50abd0628524963a15f00bde3bce5b336746c41472895ee",
+  "certificates": [
+    {
+      "constants": "SS",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "SK",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      },
+      "checked": 504,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": true
+    },
+    {
+      "constants": "SI",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "KS",
+      "words": {
+        "S": "11010"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "KK",
+      "words": {
+        "K": "11010"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "KI",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "IS",
+      "words": {
+        "S": "10"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "IK",
+      "words": {
+        "K": "10"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "II",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "SSS",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 8,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "SSK",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "SKS",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "SKK",
+      "words": {},
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "KSS",
+      "words": {
+        "S": "110"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "KSK",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      },
+      "checked": 252,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": true
+    },
+    {
+      "constants": "KKS",
+      "words": {
+        "K": "110"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    },
+    {
+      "constants": "KKK",
+      "words": {
+        "K": "110"
+      },
+      "checked": 2047,
+      "timeouts": 0,
+      "max_length": 10,
+      "certified": false
+    }
+  ],
+  "candidates": [
+    {
+      "constants": "KSK",
+      "swapped": false,
+      "reverse": true,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1339,
+      "lambda_bits": 157,
+      "sha256": "8508a5e0fe0386a926cb80e14ee0e91c87b3c299440d8f0b0c1ad1254f87a731",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": false,
+      "reverse": true,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1339,
+      "lambda_bits": 157,
+      "sha256": "8508a5e0fe0386a926cb80e14ee0e91c87b3c299440d8f0b0c1ad1254f87a731",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": true,
+      "reverse": true,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1339,
+      "lambda_bits": 157,
+      "sha256": "3827ba555a0a346b3e99505db788cbed5aa4e0f3dba5e4dfacc8e45b2e2a9b40",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": true,
+      "reverse": true,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1339,
+      "lambda_bits": 157,
+      "sha256": "3827ba555a0a346b3e99505db788cbed5aa4e0f3dba5e4dfacc8e45b2e2a9b40",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": false,
+      "reverse": true,
+      "shared": false,
+      "optimize": false,
+      "native_bits": 1475,
+      "lambda_bits": 159,
+      "sha256": "4fad19705f7dae3ac51383926bd107c3f8ee9df8e2ab7d28730f20e7f6a234e9",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": false,
+      "reverse": true,
+      "shared": false,
+      "optimize": true,
+      "native_bits": 1475,
+      "lambda_bits": 159,
+      "sha256": "4fad19705f7dae3ac51383926bd107c3f8ee9df8e2ab7d28730f20e7f6a234e9",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": true,
+      "reverse": true,
+      "shared": false,
+      "optimize": false,
+      "native_bits": 1475,
+      "lambda_bits": 159,
+      "sha256": "68d907edddb9b33639dafd46a3ec2801705ed5aff7f6c8695f8ca2cfdbfdea4e",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": true,
+      "reverse": true,
+      "shared": false,
+      "optimize": true,
+      "native_bits": 1475,
+      "lambda_bits": 159,
+      "sha256": "68d907edddb9b33639dafd46a3ec2801705ed5aff7f6c8695f8ca2cfdbfdea4e",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": false,
+      "reverse": true,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1529,
+      "lambda_bits": 148,
+      "sha256": "443d27276744c5d72c2545749e69fd1c3460e048344407d32cae1a4aa35daff1",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": false,
+      "reverse": true,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1529,
+      "lambda_bits": 148,
+      "sha256": "443d27276744c5d72c2545749e69fd1c3460e048344407d32cae1a4aa35daff1",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": true,
+      "reverse": true,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1529,
+      "lambda_bits": 148,
+      "sha256": "f3d52ea53d943cd4bf17fa3539513061d2ddfc987f857aa486f2ee5c4df72f8d",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": true,
+      "reverse": true,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1529,
+      "lambda_bits": 148,
+      "sha256": "f3d52ea53d943cd4bf17fa3539513061d2ddfc987f857aa486f2ee5c4df72f8d",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": false,
+      "reverse": false,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1555,
+      "lambda_bits": 170,
+      "sha256": "24e31fe0d56184bec96e32879c5954dd9d38e8c418408e1f792c56ba6464467d",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": false,
+      "reverse": false,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1555,
+      "lambda_bits": 170,
+      "sha256": "24e31fe0d56184bec96e32879c5954dd9d38e8c418408e1f792c56ba6464467d",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": true,
+      "reverse": false,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1555,
+      "lambda_bits": 170,
+      "sha256": "29877347c273735c6c9a2d35ca49bf7f6e559ba82c3950eacae070fc0662112c",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "KSK",
+      "swapped": true,
+      "reverse": false,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1555,
+      "lambda_bits": 170,
+      "sha256": "29877347c273735c6c9a2d35ca49bf7f6e559ba82c3950eacae070fc0662112c",
+      "words": {
+        "S": "110",
+        "K": "1111100"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": false,
+      "reverse": true,
+      "shared": false,
+      "optimize": false,
+      "native_bits": 1673,
+      "lambda_bits": 150,
+      "sha256": "b3e921c35b9010890059ed952592969e8b3fcbda24d405520144819395cae242",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": false,
+      "reverse": true,
+      "shared": false,
+      "optimize": true,
+      "native_bits": 1673,
+      "lambda_bits": 150,
+      "sha256": "b3e921c35b9010890059ed952592969e8b3fcbda24d405520144819395cae242",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": true,
+      "reverse": true,
+      "shared": false,
+      "optimize": false,
+      "native_bits": 1673,
+      "lambda_bits": 150,
+      "sha256": "ab3af587c63eb18c829eeb41b2bc978a72634314203c53ef42006ec0826457d6",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": true,
+      "reverse": true,
+      "shared": false,
+      "optimize": true,
+      "native_bits": 1673,
+      "lambda_bits": 150,
+      "sha256": "ab3af587c63eb18c829eeb41b2bc978a72634314203c53ef42006ec0826457d6",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": false,
+      "reverse": false,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1799,
+      "lambda_bits": 161,
+      "sha256": "9b860edfaa35435a99fd8d0dce0ec7868e7de95ca6314b9c546467fecdb2b1d6",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": false,
+      "reverse": false,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1799,
+      "lambda_bits": 161,
+      "sha256": "9b860edfaa35435a99fd8d0dce0ec7868e7de95ca6314b9c546467fecdb2b1d6",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": true,
+      "reverse": false,
+      "shared": true,
+      "optimize": false,
+      "native_bits": 1799,
+      "lambda_bits": 161,
+      "sha256": "1c50630a2dd51b06ca76218e9eb35d21097d08f9830f65125a24913d8d7bde98",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    },
+    {
+      "constants": "SK",
+      "swapped": true,
+      "reverse": false,
+      "shared": true,
+      "optimize": true,
+      "native_bits": 1799,
+      "lambda_bits": 161,
+      "sha256": "1c50630a2dd51b06ca76218e9eb35d21097d08f9830f65125a24913d8d7bde98",
+      "words": {
+        "K": "11100",
+        "S": "11111000"
+      }
+    }
+  ]
+}

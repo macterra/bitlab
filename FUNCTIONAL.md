@@ -195,3 +195,8 @@ candidate competitive in size with Tromp's constructions. Beating his 168-bit
 parser under a genuinely comparable contract remains open in this project.
 Future comparisons should first fix whether the score is for a parser, a
 two-argument interpreter, or a single-stream universal machine.
+
+The subsequent [bit-by-bit combinator experiment](BITFOLD.md) holds this separate
+program/input list contract fixed and measures self-interpreters in their own
+native encoding. Its best emitted result is 1,339 bits; the 174-bit candidate
+above remains unchanged.
