@@ -4,6 +4,8 @@ This document describes the original **741,267-bit** self-interpreter and its
 18-cell input layout. The newer [compact-address dialect](COMPACT_TAPE.md) has a
 **25,260-bit** self-interpreter and a 20-cell layout. The baseline remains
 available for comparison; the sizes and conventions below apply to it only.
+The latest [functional experiment](FUNCTIONAL.md) uses a different machine model
+and has its own self-interpreter contract and measurements.
 
 [`self_host.nand`](self_host.nand) is an executable NAND-tape program that
 interprets raw NAND-tape source bits. It uses only ordinary NAND, move, and branch

@@ -1,5 +1,9 @@
 # Compact branch addresses: a measured language variant
 
+This document covers the compact NAND-tape experiment. The subsequent
+[functional candidate](FUNCTIONAL.md) has a 174-bit self-interpreter with a
+different execution and input/output contract; it is not a drop-in tape dialect.
+
 The compact variant's self-interpreter is **25,260 bits**, compared with
 **741,267 bits** for the original unary-address language: **96.6% smaller**, or
 about **29.3 times smaller**. This is an implemented, tested comparison, not a

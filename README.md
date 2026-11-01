@@ -5,40 +5,45 @@ program. Our main benchmark is the length of a language's self-interpreter,
 measured in bits, with explicit input framing and a companion measurement of
 the reference implementation.
 
-The best result so far is the [compact-address dialect](COMPACT_TAPE.md): its
-self-interpreter is **25,260 bits**, 96.6% smaller than the original unary-address
-baseline. It interprets raw source using only NAND, movement, and branching.
-Every finite bitstring is valid in both dialects. Neither is claimed to be
-globally minimal.
+The latest research result is a [174-bit functional self-interpreter](FUNCTIONAL.md).
+It gives every finite bitstring a defined lambda-calculus computation and
+completes nested self-interpretation. It is a six-bit adapter around Tromp's
+168-bit parser, **not a new smallest-interpreter record**. Its input contract is
+explicit and differs from a single-stream universal machine.
 
 ```sh
-python3 compact_tape.py 0
-python3 compact_self_host.py --run 0
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape
+python3 functional_candidates.py --run 0010 --input 101101
+python3 functional_candidates.py --run '' --input 101101
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional
 ```
 
-| Dialect | Self-interpreter | Documentation |
+| Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
+| Total functional decoder | **174 bits** | [Contract, provenance, and search results](FUNCTIONAL.md) |
 | Compact binary addresses | **25,260 bits** | [Specification and comparison](COMPACT_TAPE.md) |
 | Original unary addresses | 741,267 bits | [Language](NAND_TAPE.md), [self-interpreter](SELF_INTERPRETER.md) |
 
-These are separate, generally binary-incompatible dialects with dedicated
-runners. `nand_tape.py` retains the original unary format; `compact_tape.py`
-implements the compact format. The compact interpreter has more instructions
-but much shorter encoded addresses; a smaller bit count does not imply faster
-execution.
+These models have different execution and input/output contracts; the table is
+an inventory of measured artifacts, not a controlled ranking. The functional
+candidate uses application and binding, while the tape languages use NAND,
+movement, and branching. None is claimed to be globally minimal.
 
-Regenerate the compact artifact and its measurement report:
+The tape dialects remain available through `nand_tape.py` and `compact_tape.py`;
+their bitstrings are not generally interchangeable. Their self-interpreters and
+measurements are preserved as baselines.
+
+Regenerate the functional artifact and its measurement report:
 
 ```sh
-python3 compact_self_host.py --emit compact_self_host.nand --report compact_self_host_metrics.json
+python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-All 26 tests pass, including differential execution, exhaustive short sources,
-large branch addresses, and reproducible artifacts. Self-application tests check
-bounded execution prefixes, not completed nested interpretations. The current
-size breakdown points to shared routines and tape navigation as further
-optimization opportunities.
+The 34 tests cover differential execution, exhaustive short sources, large tape
+branch addresses, and reproducible artifacts. The functional suite completes two
+nested interpretation levels; the tape suites check bounded self-application
+prefixes. The functional search found no reduction below 174 bits within its
+recorded limits. Beating Tromp under a genuinely comparable contract remains an
+open research question in this project.
 
 ## Original expression-language experiment
 

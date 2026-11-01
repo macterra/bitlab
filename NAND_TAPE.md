@@ -5,6 +5,8 @@ The newer [compact-address dialect](COMPACT_TAPE.md) preserves these execution
 operations but changes branch operand encoding. Its self-interpreter is
 25,260 bits, versus 741,267 bits for this baseline. Use the runner matching the
 dialect; the same raw bitstring can have different meanings in the two formats.
+The subsequent [functional experiment](FUNCTIONAL.md) explores a different
+machine model rather than changing either tape dialect.
 
 The objective is a minimal universal language in which **every finite bitstring
 is a valid program**, including the empty string. This prototype satisfies that

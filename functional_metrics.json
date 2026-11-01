@@ -1,0 +1,19 @@
+{
+  "tromp_parser_bits": 168,
+  "seed_decoder_bits": 174,
+  "search": {
+    "seed_bits": 174,
+    "result_bits": 174,
+    "generated": 115,
+    "rounds": 20,
+    "beam": 256,
+    "slack": 400,
+    "beta_paths": []
+  },
+  "bits": 174,
+  "closed": true,
+  "sha256": "0c04b18d4bbb4bd5806e0002488b69dfcceb6bc1bdbf4e4fcf187cbc93b8c72a",
+  "reference_python_bytes": 10559,
+  "reference_python_sha256": "ef989263362d1abbbdaf632b7635c4141c59fc95df50e067a8b277aceaf03480",
+  "provenance": "https://github.com/tromp/AIT/blob/2cfa384f11d462e77dfe96d3c5fefbecfa7ff432/ait/int.lam"
+}
