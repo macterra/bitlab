@@ -11,6 +11,16 @@ python3 nand_tape.py 11 --steps 20
 python3 -m unittest -v test_nand_tape
 ```
 
+The [self-interpreter](SELF_INTERPRETER.md) executes raw NAND-tape programs using
+only NAND-tape instructions. Its current measured size is **741,267 bits**;
+the checked-in artifact and size report are reproducible:
+
+```sh
+python3 self_host.py --run 0
+python3 self_host.py --emit self_host.nand --report self_host_metrics.json
+python3 -m unittest -v test_nand_tape test_self_host
+```
+
 ## Original expression-language experiment
 
 The notation below belongs to the earlier `nand.py` interpreter. It is separate

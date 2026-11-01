@@ -1,0 +1,13 @@
+{
+  "bits": 741267,
+  "packed_bytes": 92659,
+  "instructions": 3273,
+  "bits_by_operation": {
+    "nand": 200,
+    "move": 8742,
+    "branch": 732325
+  },
+  "sha256": "91816392f6ba24f93e8ed81ad2951c5b040c12a3b1063a801cbffd8b4896d182",
+  "reference_python_bytes": 6113,
+  "reference_python_sha256": "84e2075da12c24546aa3eefa943633c8f237b3740395d484cbd1761b90de7a3b"
+}

@@ -153,3 +153,7 @@ No global minimality theorem is claimed. Comparing candidates requires a chosen
 cost measure: semantic rules, interpreter size in a fixed notation, or encoded
 program lengths. Existing scripts in this repository are separate historical
 experiments and are not dependencies of this implementation.
+
+The next milestone is now implemented: [a NAND-tape self-interpreter](SELF_INTERPRETER.md)
+with a measured bit length, explicit input framing, differential tests, and a
+breakdown of where its encoded size is spent.
