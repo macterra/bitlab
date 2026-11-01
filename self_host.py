@@ -15,15 +15,18 @@ from nand_tape import Machine, decode, encode
 # Each row has nine bits, each followed by a permanently zero scratch cell.
 ORIGIN, SOURCE, PRESENT, READER, POS_HEAD, NEG_HEAD, POS_DATA, NEG_DATA, COUNT = range(0, 18, 2)
 WIDTH = 18
+COUNTER_END = 18
+COMPACT_WIDTH = 20
 
 
 class Assembler:
-    def __init__(self, optimize=True):
+    def __init__(self, optimize=True, width=WIDTH):
         self.code = []
         self.labels = {}
         self.serial = 0
         self.known = None
         self.optimize = optimize
+        self.width = width
 
     def fresh(self):
         self.serial += 1
@@ -74,7 +77,7 @@ class Assembler:
         self.label(loop)
         self.branch(left, done)
         self.label(left)
-        self.move(-WIDTH)
+        self.move(-self.width)
         self.jump(loop)
         self.label(done)
         self.known = 1  # The loop exits exactly when ORIGIN is one.
@@ -86,7 +89,7 @@ class Assembler:
         self.label(loop)
         self.branch(right if value else done, done if value else right)
         self.label(right)
-        self.move(WIDTH)
+        self.move(self.width)
         self.jump(loop)
         self.label(done)
         self.known = value
@@ -101,7 +104,7 @@ class Assembler:
         self.move(NEG_HEAD - POS_HEAD)
         self.branch(right, negative)
         self.label(right)
-        self.move(WIDTH + POS_HEAD - NEG_HEAD)
+        self.move(self.width + POS_HEAD - NEG_HEAD)
         self.jump(loop)
 
     def fetch(self, zero, one):
@@ -122,7 +125,7 @@ class Assembler:
             # A discarded operand needs no value dispatch or duplicate path.
             self.move(READER - PRESENT)
             self.zero()
-            self.move(WIDTH)
+            self.move(self.width)
             self.one()
             self.home(READER)
             self.jump(zero)
@@ -133,7 +136,7 @@ class Assembler:
             self.label(label)
             self.move(READER - SOURCE)
             self.zero()
-            self.move(WIDTH)
+            self.move(self.width)
             self.one()
             self.home(READER)
             self.jump(target)
@@ -154,16 +157,22 @@ class Assembler:
                 else (op, *args) for op, *args in self.code]
 
 
-def build(optimize=True):
+def build(optimize=True, binary=False):
     """Return the actual self-interpreter's instruction list and debug labels."""
-    a = Assembler(optimize=optimize)
+    width = COMPACT_WIDTH if binary else WIDTH
+    a = Assembler(optimize=optimize, width=width)
     # Initialize metadata in the program itself; the input frame contains none.
     a.one()
     a.move(READER)
     a.one()
     a.move(POS_HEAD - READER)
     a.one()
-    a.home(POS_HEAD)
+    if binary:
+        a.move(COUNTER_END - POS_HEAD)
+        a.one()
+        a.home(COUNTER_END)
+    else:
+        a.home(POS_HEAD)
 
     a.label("step")
     a.available("opcode", "halt")
@@ -199,10 +208,10 @@ def build(optimize=True):
         a.jump("step")
 
     a.label("nand_neighbor_positive")
-    a.move(WIDTH)
+    a.move(width)
     a.branch("nand_keep_positive", "nand_clear_positive")
     a.label("nand_clear_positive")
-    a.move(-WIDTH)
+    a.move(-width)
     a.zero()
     a.home(POS_DATA)
     a.jump("step")
@@ -215,7 +224,7 @@ def build(optimize=True):
     a.branch("nand_negative_inner", "nand_negative_boundary")
     # Negative cell -k-1 has right neighbor -k, except -1 whose neighbor is 0.
     for label, displacement, lane in (
-        ("nand_negative_inner", -WIDTH + NEG_DATA, NEG_DATA),
+        ("nand_negative_inner", -width + NEG_DATA, NEG_DATA),
         ("nand_negative_boundary", POS_DATA, POS_DATA),
     ):
         clear, keep = a.fresh(), a.fresh()
@@ -240,7 +249,7 @@ def build(optimize=True):
             outward = (direction == "right") == (sign == "positive")
             if outward:
                 a.zero()
-                a.move(WIDTH)
+                a.move(width)
                 a.one()
                 a.home(marker)
                 a.jump("step")
@@ -251,7 +260,7 @@ def build(optimize=True):
                 a.label(inner)
                 a.move(marker)
                 a.zero()
-                a.move(-WIDTH)
+                a.move(-width)
                 a.one()
                 a.home(marker)
                 a.jump("step")
@@ -276,15 +285,40 @@ def build(optimize=True):
             a.home(data)
             a.jump(target)
 
-    a.label("skip_first_operand")
-    a.fetch("count_operand", "skip_first_operand")
+    def skip_number(label, done):
+        a.label(label)
+        if binary:
+            a.fetch(done, label + "_digit")
+            a.label(label + "_digit")
+            a.fetch(label, label)
+        else:
+            a.fetch(done, label)
+
+    skip_number("skip_first_operand", "count_operand")
     a.label("count_operand")
-    a.fetch("reset_reader", "increment_count")
-    a.label("increment_count")
-    a.seek(COUNT, value=0)
-    a.one()
-    a.home(COUNT)
-    a.jump("count_operand")
+    if binary:
+        a.fetch("reset_reader", "count_digit")
+        a.label("count_digit")
+        a.fetch("append_zero", "append_one")
+        for label, value in (("append_zero", 0), ("append_one", 1)):
+            a.label(label)
+            a.seek(COUNTER_END)
+            if value:
+                a.move(COUNT - COUNTER_END)
+                a.one()
+                a.move(COUNTER_END - COUNT)
+            a.zero()
+            a.move(width)
+            a.one()
+            a.home(COUNTER_END)
+            a.jump("count_operand")
+    else:
+        a.fetch("reset_reader", "increment_count")
+        a.label("increment_count")
+        a.seek(COUNT, value=0)
+        a.one()
+        a.home(COUNT)
+        a.jump("count_operand")
     a.label("reset_reader")
     a.seek(READER)
     a.zero()
@@ -295,16 +329,46 @@ def build(optimize=True):
 
     a.label("seek_instruction")
     a.move(COUNT)
-    a.branch("count_done", "count_nonzero")
-    a.label("count_done")
-    a.move(-COUNT)
-    a.jump("step")
-    a.label("count_nonzero")
-    a.move(-COUNT)
-    a.seek(COUNT, value=0)
-    a.move(-WIDTH)
-    a.zero()
-    a.home(COUNT)
+    if binary:
+        a.label("counter_scan")
+        a.branch("counter_check_end", "count_nonzero")
+        a.label("counter_check_end")
+        a.move(COUNTER_END - COUNT)
+        a.branch("counter_scan_next", "count_done")
+        a.label("counter_scan_next")
+        a.move(width + COUNT - COUNTER_END)
+        a.jump("counter_scan")
+        a.label("count_done")
+        a.zero()  # Remove end marker; all digit bits are already zero.
+        a.home(COUNTER_END)
+        a.move(COUNTER_END)
+        a.one()  # Empty binary counter at the next instruction boundary.
+        a.move(-COUNTER_END)
+        a.jump("step")
+        a.label("count_nonzero")
+        a.home(COUNT)
+        a.seek(COUNTER_END)
+        a.move(-width + COUNT - COUNTER_END)
+        a.label("decrement_digit")
+        a.branch("borrow", "decrement_done")
+        a.label("borrow")
+        a.one()
+        a.move(-width)
+        a.jump("decrement_digit")
+        a.label("decrement_done")
+        a.zero()
+        a.home(COUNT)
+    else:
+        a.branch("count_done", "count_nonzero")
+        a.label("count_done")
+        a.move(-COUNT)
+        a.jump("step")
+        a.label("count_nonzero")
+        a.move(-COUNT)
+        a.seek(COUNT, value=0)
+        a.move(-width)
+        a.zero()
+        a.home(COUNT)
     a.available("skip_opcode", "halt")
     a.label("skip_opcode")
     a.fetch("skip_fixed_operand", "skip_opcode_second")
@@ -312,34 +376,32 @@ def build(optimize=True):
     a.fetch("skip_fixed_operand", "skip_unary_zero")
     a.label("skip_fixed_operand")
     a.fetch("seek_instruction", "seek_instruction")
-    a.label("skip_unary_zero")
-    a.fetch("skip_unary_one", "skip_unary_zero")
-    a.label("skip_unary_one")
-    a.fetch("seek_instruction", "skip_unary_one")
+    skip_number("skip_unary_zero", "skip_unary_one")
+    skip_number("skip_unary_one", "seek_instruction")
     a.label("halt")  # Exactly one past the final instruction.
     return a.finish(), a.labels
 
 
-def frame(bits, ones=()):
+def frame(bits, ones=(), width=WIDTH):
     """Encode raw program bits and finite guest tape data, without parsing code."""
     if any(bit not in "01" for bit in bits):
         raise ValueError("program must contain only 0 and 1")
     tape = set()
     for i, bit in enumerate(bits):
-        tape.add(WIDTH * i + PRESENT)
+        tape.add(width * i + PRESENT)
         if bit == "1":
-            tape.add(WIDTH * i + SOURCE)
+            tape.add(width * i + SOURCE)
     for i in ones:
-        tape.add(WIDTH * (i if i >= 0 else -i - 1) +
+        tape.add(width * (i if i >= 0 else -i - 1) +
                  (POS_DATA if i >= 0 else NEG_DATA))
     return tape
 
 
-def result(tape):
+def result(tape, width=WIDTH):
     """Read the guest's output tape/head; ignore interpreter working storage."""
     ones, heads = set(), []
     for position in tape:
-        row, lane = divmod(position, WIDTH)
+        row, lane = divmod(position, width)
         if lane == POS_DATA:
             ones.add(row)
         elif lane == NEG_DATA:
@@ -353,12 +415,12 @@ def result(tape):
     return ones, heads[0]
 
 
-def metrics(code):
-    bits = encode(code)
-    by_operation = {op: sum(len(encode([instruction])) for instruction in code
+def metrics(code, encoder=encode, reference_files=("nand_tape.py",)):
+    bits = encoder(code)
+    by_operation = {op: sum(len(encoder([instruction])) for instruction in code
                             if instruction[0] == op)
                     for op in ("nand", "move", "branch")}
-    reference = Path(__file__).with_name("nand_tape.py").read_bytes()
+    reference = b"".join(Path(__file__).with_name(name).read_bytes() for name in reference_files)
     return dict(bits=len(bits), packed_bytes=(len(bits) + 7) // 8,
                 instructions=len(code), bits_by_operation=by_operation,
                 sha256=hashlib.sha256(bits.encode("ascii")).hexdigest(),

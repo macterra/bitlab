@@ -21,6 +21,15 @@ python3 self_host.py --emit self_host.nand --report self_host_metrics.json
 python3 -m unittest -v test_nand_tape test_self_host
 ```
 
+A [compact-address variant](COMPACT_TAPE.md) reduces its own self-interpreter to
+**25,260 bits**—96.6% smaller—while preserving total binary syntax and the same
+three execution operations. It is a separate dialect; the original is retained.
+
+```sh
+python3 compact_self_host.py --run 0
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape
+```
+
 ## Original expression-language experiment
 
 The notation below belongs to the earlier `nand.py` interpreter. It is separate

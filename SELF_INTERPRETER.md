@@ -182,3 +182,7 @@ its size: simply re-encoding this artifact without changing its guest decoder
 would not measure a self-interpreter of the new language. Relative addresses and
 shared helper routines are other candidates. None of these measurements by
 itself establishes a globally minimal language.
+
+That comparison is now implemented in [the compact-address experiment](COMPACT_TAPE.md).
+Its self-interpreter is 25,260 bits and decodes the new dialect itself; the unary
+artifact and the baseline measurements above remain unchanged.
