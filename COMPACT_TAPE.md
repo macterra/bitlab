@@ -16,13 +16,26 @@ Each operand is a sequence of pairs `1b`, followed by a terminating `0`. The
 payload bits `b` give a nonnegative integer in most-significant-first order.
 An empty sequence denotes zero. The canonical encoder omits leading zeros.
 
-| Address | Unary encoding | Compact encoding |
-| ---: | --- | --- |
-| 0 | `0` | `0` |
-| 1 | `10` | `110` |
-| 2 | `110` | `11100` |
-| 3 | `1110` | `11110` |
-| 4 | `11110` | `1110100` |
+| Address | Unary length | Compact length |
+| ---: | ---: | ---: |
+| 0 | 1 bit | 1 bit |
+| 1 | 2 bits | 3 bits |
+| 2 | 3 bits | 5 bits |
+| 3 | 4 bits | 5 bits |
+| 4 | 5 bits | 7 bits |
+| 6 | 7 bits | 7 bits |
+| 8 | 9 bits | 9 bits |
+| 16 | 17 bits | 11 bits |
+| 100 | 101 bits | 15 bits |
+| 1,000 | 1,001 bits | 21 bits |
+
+For small addresses, the compact format can be longer: it pays a delimiter bit
+for each binary digit. Its advantage is logarithmic growth rather than unary's
+linear growth. The self-interpreter branches among thousands of instructions,
+where that difference dominates. "Compact" describes the resulting savings,
+not a guarantee that every individual address is shorter.
+
+For example, address 2 is `110` in unary and `11100` in the compact format.
 
 For positive address `n`, the compact encoding takes `2*bit_length(n)+1` bits,
 instead of `n+1`. The two-bit branch prefix `11` is unchanged. For example,
