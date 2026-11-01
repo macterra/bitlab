@@ -1,4 +1,10 @@
-# NAND tape: a baseline with total binary syntax
+# NAND tape: the unary-address baseline
+
+This is the specification for `nand_tape.py`, the original unary-address dialect.
+The newer [compact-address dialect](COMPACT_TAPE.md) preserves these execution
+operations but changes branch operand encoding. Its self-interpreter is
+25,260 bits, versus 741,267 bits for this baseline. Use the runner matching the
+dialect; the same raw bitstring can have different meanings in the two formats.
 
 The objective is a minimal universal language in which **every finite bitstring
 is a valid program**, including the empty string. This prototype satisfies that
@@ -143,17 +149,17 @@ unit tape movement, unary branch operands, absolute instruction addressing, and 
 storage. Unary encoding is simple but makes distant branches expensive. Changing
 the encoding to use fewer bits need not make the execution model simpler.
 
-The compiler already let us remove arbitrary NAND source addresses and arbitrary
-movement distances: one-bit selectors suffice. Next, investigate whether
-movement or branching can arise from the same update rule. Combining their
-fields into a single large instruction would reduce the
-opcode count without necessarily reducing the machine's complexity.
+The compiler let us remove arbitrary NAND source addresses and movement
+distances: one-bit selectors suffice. We then implemented a
+[self-interpreter](SELF_INTERPRETER.md) and adopted its encoded bit length as the
+main experimental benchmark, alongside reference-source size and explicit
+input-format costs.
 
-No global minimality theorem is claimed. Comparing candidates requires a chosen
-cost measure: semantic rules, interpreter size in a fixed notation, or encoded
-program lengths. Existing scripts in this repository are separate historical
-experiments and are not dependencies of this implementation.
+The [compact-address experiment](COMPACT_TAPE.md) reduced that benchmark from
+741,267 to 25,260 bits without reducing the number of instruction forms. Shared
+routines and tape navigation are now substantial remaining opportunities. More
+fundamentally, movement or branching might arise from a simpler common rule;
+merely merging their fields into one instruction would not establish that.
 
-The next milestone is now implemented: [a NAND-tape self-interpreter](SELF_INTERPRETER.md)
-with a measured bit length, explicit input framing, differential tests, and a
-breakdown of where its encoded size is spent.
+No global minimality theorem is claimed. Earlier circuit and expression scripts
+are separate historical experiments and are not dependencies of this baseline.

@@ -1,4 +1,9 @@
-# NAND tape interpreting NAND tape
+# Unary-address baseline self-interpreter
+
+This document describes the original **741,267-bit** self-interpreter and its
+18-cell input layout. The newer [compact-address dialect](COMPACT_TAPE.md) has a
+**25,260-bit** self-interpreter and a 20-cell layout. The baseline remains
+available for comparison; the sizes and conventions below apply to it only.
 
 [`self_host.nand`](self_host.nand) is an executable NAND-tape program that
 interprets raw NAND-tape source bits. It uses only ordinary NAND, move, and branch
@@ -176,13 +181,11 @@ uses many unit movements, which increase instruction indices; unary absolute
 addresses then make jumps to those indices expensive. So the measured size is
 mostly addressing overhead, not NAND logic.
 
-The next useful comparison is a language variant with a more compact branch
-encoding. Its self-interpreter must implement the new decoder before counting
-its size: simply re-encoding this artifact without changing its guest decoder
-would not measure a self-interpreter of the new language. Relative addresses and
-shared helper routines are other candidates. None of these measurements by
-itself establishes a globally minimal language.
+The [compact-address experiment](COMPACT_TAPE.md) tested that finding. Its
+self-interpreter implements the new guest decoder and measures 25,260 bits,
+96.6% smaller. Simply re-encoding this baseline's instructions would instead
+produce a cross-interpreter, not a self-interpreter of the new dialect.
 
-That comparison is now implemented in [the compact-address experiment](COMPACT_TAPE.md).
-Its self-interpreter is 25,260 bits and decodes the new dialect itself; the unary
-artifact and the baseline measurements above remain unchanged.
+The unary artifact and measurements above remain unchanged. Shared helper
+routines and more economical tape navigation are further candidates; none of
+these measurements establishes a globally minimal language.

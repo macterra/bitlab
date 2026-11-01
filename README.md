@@ -1,34 +1,44 @@
 # nand
 
 Exploring a minimal universal language where every finite bitstring is a valid
-program. The new [NAND tape prototype](NAND_TAPE.md) provides a complete execution
-model, a Python interpreter, and a constructive translation from binary Turing
-machines. It is a baseline for minimizing the language, not a claim of optimality.
+program. Our main benchmark is the length of a language's self-interpreter,
+measured in bits, with explicit input framing and a companion measurement of
+the reference implementation.
+
+The best result so far is the [compact-address dialect](COMPACT_TAPE.md): its
+self-interpreter is **25,260 bits**, 96.6% smaller than the original unary-address
+baseline. It interprets raw source using only NAND, movement, and branching.
+Every finite bitstring is valid in both dialects. Neither is claimed to be
+globally minimal.
 
 ```sh
-python3 nand_tape.py 0 --decode
-python3 nand_tape.py 11 --steps 20
-python3 -m unittest -v test_nand_tape
-```
-
-The [self-interpreter](SELF_INTERPRETER.md) executes raw NAND-tape programs using
-only NAND-tape instructions. Its current measured size is **741,267 bits**;
-the checked-in artifact and size report are reproducible:
-
-```sh
-python3 self_host.py --run 0
-python3 self_host.py --emit self_host.nand --report self_host_metrics.json
-python3 -m unittest -v test_nand_tape test_self_host
-```
-
-A [compact-address variant](COMPACT_TAPE.md) reduces its own self-interpreter to
-**25,260 bits**—96.6% smaller—while preserving total binary syntax and the same
-three execution operations. It is a separate dialect; the original is retained.
-
-```sh
+python3 compact_tape.py 0
 python3 compact_self_host.py --run 0
 python3 -m unittest -v test_nand_tape test_self_host test_compact_tape
 ```
+
+| Dialect | Self-interpreter | Documentation |
+| --- | ---: | --- |
+| Compact binary addresses | **25,260 bits** | [Specification and comparison](COMPACT_TAPE.md) |
+| Original unary addresses | 741,267 bits | [Language](NAND_TAPE.md), [self-interpreter](SELF_INTERPRETER.md) |
+
+These are separate, generally binary-incompatible dialects with dedicated
+runners. `nand_tape.py` retains the original unary format; `compact_tape.py`
+implements the compact format. The compact interpreter has more instructions
+but much shorter encoded addresses; a smaller bit count does not imply faster
+execution.
+
+Regenerate the compact artifact and its measurement report:
+
+```sh
+python3 compact_self_host.py --emit compact_self_host.nand --report compact_self_host_metrics.json
+```
+
+All 26 tests pass, including differential execution, exhaustive short sources,
+large branch addresses, and reproducible artifacts. Self-application tests check
+bounded execution prefixes, not completed nested interpretations. The current
+size breakdown points to shared routines and tape navigation as further
+optimization opportunities.
 
 ## Original expression-language experiment
 
