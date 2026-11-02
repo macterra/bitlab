@@ -1,8 +1,8 @@
-# Nought and Knot
+# Bitlab
 
-**Binary languages whose empty programs interpret their own languages.**
+**Experiments in minimal universal binary languages: Knot, Nought, and self-interpretation.**
 
-Every finite bitstring is a valid program in both languages. Nought constructs
+Every finite bitstring is a valid program in Knot and Nought. Nought constructs
 combinators by folding bits from right to left. Knot uses compact BCL trees,
 completes missing pieces with K, and ignores bits after the first expression.
 Both give empty source the meaning of their own decoder.

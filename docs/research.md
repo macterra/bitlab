@@ -1,4 +1,4 @@
-# Nought and Knot: open research direction
+# Bitlab: open research direction
 
 The goal is a minimal universal binary programming language in which every
 finite bitstring has defined execution. Self-interpreter length is a central
