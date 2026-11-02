@@ -18,6 +18,12 @@ applies the same optimizations to left-to-right Jot: its ordinary kernel reaches
 127 bits and its reflective kernel 168 bits. Nought's reverse direction remains
 13 bits smaller in this bounded search.
 
+The [totalized BCL experiment](TOTAL_BCL.md) preserves BCL's compact SK encoding
+while accepting every finite bitstring: missing terms default to K and trailing
+bits after the first expression are unused. With empty-program reflection it
+has a zero-bit self-interpreter and a 261-bit kernel. Its Rule 30 program is
+809 bits, versus Nought's 1,979; the smaller guest comes with a larger decoder.
+
 The earlier [174-bit functional candidate](FUNCTIONAL.md)
 gives every finite bitstring a defined lambda-calculus computation and
 completes nested self-interpretation. It is a six-bit adapter around Tromp's
@@ -53,7 +59,7 @@ and decoding checks for every variant.
 
 ```sh
 python3 reflective_fold.py --run 00111001110001111111 --input 101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold test_direction_search test_rule30
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold test_direction_search test_rule30 test_total_bcl
 ```
 
 The first command runs Nought's compiled identity program and returns `101`.

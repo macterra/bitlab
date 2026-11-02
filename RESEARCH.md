@@ -60,6 +60,7 @@ For comparable lambda-backed candidates, record at least:
 | Nought (reflective SK bitfold) | **0 bits** | **155 bits** |
 | Ordinary SK bitfold | 1,169 bits | **114 bits** |
 | Ordinary KSK bitfold | 1,035 bits | 123 bits |
+| Reflective totalized BCL | **0 bits** | 261 bits |
 
 The original two points traded off the coordinates. The subsequent
 [Nought construction](REFLECTIVE_FOLD.md) improves both coordinates
@@ -70,6 +71,14 @@ provenance, but not a representation-independent lower bound. Input encoders,
 native primitives, omitted parser work, and observation conventions must also
 be visible. A changed interface is permitted and labeled, not automatically
 disqualified.
+
+The [totalized BCL candidate](TOTAL_BCL.md) adds a useful guest-size measurement:
+Rule 30 occupies 809 bits instead of Nought's 1,979, while its reflective kernel
+grows to 261 bits. It preserves complete BCL tree codes, completes missing pieces
+with K, and leaves the suffix unused. Thus compact programs and total syntax can
+coexist, but the two-coordinate table above alone misses the benefit: guest
+encoding size is a third practical cost. Nought retains its whole-source fold
+semantics and smaller kernel.
 
 ## Broader architectural leads
 
