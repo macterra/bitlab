@@ -75,6 +75,54 @@ are obtained by bracket abstraction to SK and the certified native encoding.
 Their helpers are fully expanded, and no eta rewrite or interpreter opcode is
 used in that compiler.
 
+## Matched comparison with left-to-right Jot
+
+The later optimizations also help the forward fold. Applying the same pipeline
+to both directions gives:
+
+| Basis | Direction | Ordinary kernel in BLC | Native self-interpreter | Reflective kernel in BLC |
+| --- | --- | ---: | ---: | ---: |
+| SK (Jot) | Left to right | 127 | 1,355 | 168 |
+| SK (Nought's ordinary fold) | Right to left | **114** | **1,169** | **155** |
+| KSK | Left to right | 136 | 1,187 | 177 |
+| KSK | Right to left | **123** | **1,035** | **164** |
+
+All four reflective variants have a zero-bit native self-interpreter. Both
+directions use the same raw boolean-pair lists, expanded constants, compiler,
+and reflection wrapper. Right-to-left scanning still saves **13 kernel bits**
+for each basis, including after reflection. Nought retains its scan direction.
+
+The forward fold passes an accumulator into each recursive call; the reverse
+fold instead uses the recursively decoded tail as the accumulator. Each seed
+expresses recursion by direct self-application, with a replayable common-reduct
+proof connecting it to the original evaluator. Both receive 16 contraction
+rounds, beam 128, and 100 bits of growth allowance, followed by two equivalence
+rewrite rounds, beam 64, allowance 32, and a 20,000-candidate cap. Reflection
+receives the same 16-round contraction search for every candidate.
+
+The forward kernels contract to 129/138 bits and then rewrite to 127/136.
+Their rewrite searches generate 10,683/13,600 candidates; all four searches
+finish at the round limit, without reaching the candidate cap. These are
+matched bounded searches, not a proof that reverse scanning is inherently
+smaller or that either direction has reached its minimum.
+
+Reproduce the comparison and its tests with:
+
+```sh
+python3 direction_search.py --report direction_metrics.json
+python3 -m unittest -v test_direction_search test_reflective_fold
+```
+
+[`direction_metrics.json`](direction_metrics.json) records all four kernels,
+native self-interpreters, replayable proofs, settings, and implementation hashes.
+Tests compare both directions on every nonempty source through six bits after
+source reversal. Both forward native self-interpreters complete a bit-flip guest
+from raw source, returning `001` for input `101`, with a 100-million-step budget.
+The initial 10-million-step budget was insufficient for the SK version; the
+size comparison is not a runtime comparison. Both forward reflective variants
+also complete that guest through eight nested empty-program interpretation
+levels. Existing reverse-fold tests remain in place.
+
 ## Explicit reflection at empty source
 
 Let `F` be one of the optimized ordinary fold decoders. Define `R` by ordinary

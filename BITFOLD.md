@@ -138,6 +138,12 @@ Swapping the bit labels did not change these lengths. Neither compiler option
 improved the scores in this run. The best artifact is about 7.7 times the size
 of the existing 174-bit candidate, despite the simpler source-processing rule.
 
+The [later matched optimization comparison](REFLECTIVE_FOLD.md#matched-comparison-with-left-to-right-jot)
+reduces the SK kernels to 127 bits forward and 114 bits backward, and the KSK
+kernels to 136 bits forward and 123 bits backward. Thus the reverse direction's
+13-bit advantage survives applying the later optimization pipeline to both.
+The table above preserves the original experiment's measurements.
+
 Artifacts:
 
 - [`jot_self.bits`](jot_self.bits) and [`jot_metrics.json`](jot_metrics.json): baseline.

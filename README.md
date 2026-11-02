@@ -13,6 +13,11 @@ native self-interpreter and a 155-bit decoder kernel**, under the original raw-l
 interface. Its ordinary version has a 114-bit kernel and a 1,169-bit native
 self-interpreter. These are distinct measurements, both reported explicitly.
 
+A [matched scan-direction comparison](REFLECTIVE_FOLD.md#matched-comparison-with-left-to-right-jot)
+applies the same optimizations to left-to-right Jot: its ordinary kernel reaches
+127 bits and its reflective kernel 168 bits. Nought's reverse direction remains
+13 bits smaller in this bounded search.
+
 The earlier [174-bit functional candidate](FUNCTIONAL.md)
 gives every finite bitstring a defined lambda-calculus computation and
 completes nested self-interpretation. It is a six-bit adapter around Tromp's
@@ -48,7 +53,7 @@ and decoding checks for every variant.
 
 ```sh
 python3 reflective_fold.py --run 00111001110001111111 --input 101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold test_direction_search
 ```
 
 The first command runs Nought's compiled identity program and returns `101`.
@@ -79,7 +84,7 @@ Regenerate the functional artifact and its measurement report:
 python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-The 77 tests cover differential execution, exhaustive short sources, large tape
+The tests cover differential execution, exhaustive short sources, large tape
 branch addresses, and reproducible artifacts. The functional suite completes two
 nested interpretation levels; the tape suites check bounded self-application
 prefixes. The functional search found no reduction below 174 bits within its
