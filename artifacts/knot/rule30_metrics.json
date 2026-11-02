@@ -1,0 +1,21 @@
+{
+  "language": "Knot",
+  "program_bits": 809,
+  "program_sha256": "7619a28ea51ca94fc4d602b038ebd7c551f6b2bc50cd6211817e753de6cea7d9",
+  "source_files": [
+    "core/__init__.py",
+    "core/artifacts.py",
+    "core/combinators.py",
+    "core/lambda_calculus.py",
+    "core/reflection.py",
+    "core/rewrites.py",
+    "core/search.py",
+    "examples/__init__.py",
+    "examples/knot_rule30_step.py",
+    "examples/rule30.py",
+    "languages/__init__.py",
+    "languages/knot.py"
+  ],
+  "source_bytes": 35031,
+  "source_sha256": "6dc40704fafd8f9c98d2a08b257f9ceaa363468b9555d2b0425ff93bbb986775"
+}

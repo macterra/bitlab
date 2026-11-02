@@ -1,0 +1,25 @@
+{
+  "language": "Knot",
+  "program_bits": 2042,
+  "program_sha256": "2a5cf3c8e8de60cfcf96523f91a7a1d531e82437c79d0d5f87e416ad504dcb7e",
+  "lambda_function_bits": 470,
+  "kernel_bits": 261,
+  "input_format": "1^n 0 row; n updates; fixed width; zero boundaries",
+  "output_format": "initial row followed by n successor rows, concatenated",
+  "source_files": [
+    "core/__init__.py",
+    "core/artifacts.py",
+    "core/combinators.py",
+    "core/lambda_calculus.py",
+    "core/reflection.py",
+    "core/rewrites.py",
+    "core/search.py",
+    "examples/__init__.py",
+    "examples/knot_rule30.py",
+    "examples/rule30.py",
+    "languages/__init__.py",
+    "languages/knot.py"
+  ],
+  "source_bytes": 37536,
+  "source_sha256": "80a8177083bfe7e67adcc7bb73fe91f16f9421ec5f1aee3cf006ffcf7bc30b00"
+}

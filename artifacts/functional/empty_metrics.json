@@ -1,0 +1,30 @@
+{
+  "self_interpreter_bits": 0,
+  "kernel_blc_bits": 215,
+  "baseline_kernel_blc_bits": 174,
+  "kernel_sha256": "f5e283da552572e3d5e6a85cafd35c96348663bd4ec40d5d78db2906b20f9c3e",
+  "self_interpreter_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "contract": "Unchanged separate raw program/input boolean-pair lists",
+  "reduction": {
+    "seed_bits": 215,
+    "result_bits": 215,
+    "generated": 11,
+    "rounds": 12,
+    "beam": 64,
+    "slack": 128,
+    "beta_paths": []
+  },
+  "proof": [],
+  "source_files": [
+    "core/__init__.py",
+    "core/artifacts.py",
+    "core/lambda_calculus.py",
+    "core/rewrites.py",
+    "core/search.py",
+    "experiments/__init__.py",
+    "experiments/empty_interpreter.py",
+    "experiments/functional_candidates.py"
+  ],
+  "source_bytes": 31870,
+  "source_sha256": "b6e6263926d00a0d5fe695eccec48c163599c4454e5f548fce23729d54dcff8c"
+}
