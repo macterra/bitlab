@@ -187,4 +187,10 @@ native superoptimization. A short native interpreter could still exist.
 The next useful optimization target is the native encoding and compiler,
 especially recursion and abstraction, rather than the apparent size of a fold
 written in another language. The 174-bit candidate remains the smallest measured
-self-interpreter in this repository under the separate-list contract.
+self-interpreter at that stage under the separate-list contract.
+
+The later [reflective-fold experiment](REFLECTIVE_FOLD.md) improves the ordinary
+SK/KSK kernels to 114/123 BLC bits and their native self-interpreters to
+1,169/1,035 bits. An explicitly measured empty-source reflection extension gives
+a zero-bit self-interpreter with a 155-bit kernel; the earlier artifacts above
+remain unchanged as reproducible baselines.

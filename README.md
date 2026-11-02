@@ -5,9 +5,13 @@ program. Our main benchmark is the length of a language's self-interpreter,
 measured in bits, with explicit input framing and a companion measurement of
 the reference implementation.
 
-The smallest measured raw-list decoder kernel is the
-[174-bit functional candidate](FUNCTIONAL.md).
-It gives every finite bitstring a defined lambda-calculus computation and
+The current [reflective bitfold construction](REFLECTIVE_FOLD.md) has a **zero-bit
+native self-interpreter and a 155-bit decoder kernel**, under the original raw-list
+interface. Its ordinary version has a 114-bit kernel and a 1,169-bit native
+self-interpreter. These are distinct measurements, both reported explicitly.
+
+The earlier [174-bit functional candidate](FUNCTIONAL.md)
+gives every finite bitstring a defined lambda-calculus computation and
 completes nested self-interpretation. It is a six-bit adapter around Tromp's
 168-bit parser, **not a new smallest-interpreter record**. Its input contract is
 explicit and differs from a single-stream universal machine.
@@ -24,33 +28,34 @@ native tree operator and five rewrite rules. Its self-interpreters measure 329
 bits with quoted-tree input and 987 bits with raw binary input; both execute their
 own source. The input contracts and parser cost are recorded separately.
 
-The [bit-by-bit combinator experiment](BITFOLD.md) tested a different
+The initial [bit-by-bit combinator experiment](BITFOLD.md) tested a different
 execution rule with no structured source parser. Its best emitted self-interpreter
-is 1,339 native bits across 24 measured configurations, so it did not improve on
+was 1,339 native bits across 24 measured configurations, so it did not improve on
 174 bits. Universality certificates and the negative result are preserved.
 
 The [equivalence-rewrite search](REWRITE_SEARCH.md) explores helper
 factoring and larger intermediate expressions with replayable beta proofs.
-Three bounded runs generated 912,292 candidates (overlapping between runs);
-the best remains 174 bits.
+Three bounded runs generated 912,292 candidates (overlapping between runs)
+without improving that experiment's 174-bit baseline.
 
-The latest [joint encoding/decoder experiment](ENCODING_SEARCH.md) tests all 24
+The earlier [joint encoding/decoder experiment](ENCODING_SEARCH.md) tests all 24
 assignments of short constructor tags and unary-index polarities. Its 728,254
-generated candidates also leave the best at 174 bits, with a native interpreter
+generated candidates also found nothing below 174 bits in that family, with a native interpreter
 and decoding checks for every variant.
 
 ```sh
 python3 functional_candidates.py --run 0010 --input 101101
 python3 functional_candidates.py --run '' --input 101101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold
 ```
 
 | Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
+| Reflective bitfold | **0 bits**; 155-bit kernel | [Construction and both size measurements](REFLECTIVE_FOLD.md) |
 | Total functional decoder | **174 bits** | [Contract, provenance, and search results](FUNCTIONAL.md) |
 | Empty-program boundary case | **0 bits**; 215-bit kernel | [Why both measurements matter](RESEARCH.md) |
 | Triage raw-bit interpreter | 987 bits | [Native tree runtime and input contracts](TRIAGE.md) |
-| Best bit-by-bit combinator variant | 1,339 bits | [Certificates and bounded search](BITFOLD.md) |
+| Optimized ordinary bitfold (KSK) | 1,035 bits; 123-bit kernel | [Certificates and optimizations](REFLECTIVE_FOLD.md) |
 | Compact binary addresses | **25,260 bits** | [Specification and comparison](COMPACT_TAPE.md) |
 | Original unary addresses | 741,267 bits | [Language](NAND_TAPE.md), [self-interpreter](SELF_INTERPRETER.md) |
 
@@ -69,7 +74,7 @@ Regenerate the functional artifact and its measurement report:
 python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-The 70 tests cover differential execution, exhaustive short sources, large tape
+The 77 tests cover differential execution, exhaustive short sources, large tape
 branch addresses, and reproducible artifacts. The functional suite completes two
 nested interpretation levels; the tape suites check bounded self-application
 prefixes. The functional search found no reduction below 174 bits within its
