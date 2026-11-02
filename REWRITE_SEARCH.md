@@ -137,3 +137,9 @@ it does not enumerate alternative recursion constructions.
 A failed search establishes no lower bound. Even an exhaustive search within
 this rewrite family would not show that 174 bits is minimal. Alternative source
 encodings, evaluator designs, and representations remain separate experiments.
+
+The subsequent [joint encoding/decoder experiment](ENCODING_SEARCH.md) explores
+24 constructor-tag and unary-index variants with native-cost optimization. Its
+best result remains 174 bits; it also establishes a cost identity explaining
+why shortening application's tag alone cannot shorten a fixed lambda term in
+that family.

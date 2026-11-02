@@ -16,15 +16,20 @@ execution rule with no structured source parser. Its best emitted self-interpret
 is 1,339 native bits across 24 measured configurations, so it did not improve on
 174 bits. Universality certificates and the negative result are preserved.
 
-The latest [equivalence-rewrite search](REWRITE_SEARCH.md) explores helper
+The [equivalence-rewrite search](REWRITE_SEARCH.md) explores helper
 factoring and larger intermediate expressions with replayable beta proofs.
 Three bounded runs generated 912,292 candidates (overlapping between runs);
 the best remains 174 bits.
 
+The latest [joint encoding/decoder experiment](ENCODING_SEARCH.md) tests all 24
+assignments of short constructor tags and unary-index polarities. Its 728,254
+generated candidates also leave the best at 174 bits, with a native interpreter
+and decoding checks for every variant.
+
 ```sh
 python3 functional_candidates.py --run 0010 --input 101101
 python3 functional_candidates.py --run '' --input 101101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search
 ```
 
 | Candidate | Self-interpreter | Documentation |
@@ -49,7 +54,7 @@ Regenerate the functional artifact and its measurement report:
 python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-The 49 tests cover differential execution, exhaustive short sources, large tape
+The 58 tests cover differential execution, exhaustive short sources, large tape
 branch addresses, and reproducible artifacts. The functional suite completes two
 nested interpretation levels; the tape suites check bounded self-application
 prefixes. The functional search found no reduction below 174 bits within its

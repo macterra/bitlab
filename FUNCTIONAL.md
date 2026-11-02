@@ -206,3 +206,8 @@ steps, helper factoring, applied-parameter exchange, larger retained intermediat
 and a certified alternative starting form. Its three bounded runs generated
 912,292 candidates in total (with overlap between runs) and found no improvement
 below 174 bits. The original contraction-only result above remains reproducible.
+
+The [joint encoding/decoder experiment](ENCODING_SEARCH.md) then tested 24
+constructor-tag assignments and unary-index polarities, scoring each generated
+decoder in its own encoding. The baseline calibrates exactly, and the best
+remains 174 bits after 728,254 generated candidates across variants and phases.
