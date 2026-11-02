@@ -1,0 +1,20 @@
+{
+  "runtime": "Triage calculus, lazy head reduction; five native rewrite rules",
+  "binary_self_bits": 987,
+  "structural_self_bits": 329,
+  "structural_input": "Quoted tree, not raw bits; host quote does not evaluate",
+  "binary_input": "Separate raw program/input tree lists; prefix EOF supplies T",
+  "primitive_bits": {
+    "T": 1,
+    "K": 3,
+    "I": 9,
+    "S": 11
+  },
+  "binary_sha256": "476acf2e987cea3bf4aae3b441eb16a7530be010da0e7464965c1f091313857b",
+  "structural_sha256": "c3943b2a86cc8e874407ae59a7d5676aef5776ea74a11752055caef370b7d9d5",
+  "source_files": [
+    "triage.py"
+  ],
+  "source_bytes": 9610,
+  "source_sha256": "a49ffde9bb2002695002ba3901bf0cfae6708b17ee0e92379225c6cfd98cef64"
+}

@@ -86,5 +86,11 @@ These are prior-art leads, not results established by this repository. The
 research should pursue substantive changes in representation and execution,
 alongside proof and measurement, rather than exhaust only nearby BLC rewrites.
 
+The [triage-calculus experiment](TRIAGE.md) now implements the structural-reflection
+lead. It has native self-interpreters of 329 bits for quoted trees and 987 bits
+for raw binary input, with an independent runtime check and constructive SK
+embedding. These use a different runtime, so they are separate frontier entries,
+not smaller raw-list lambda kernels.
+
 Significant completed milestones are committed and pushed as authorized by the
 user. Unrelated exploratory files already in the workspace are preserved.
