@@ -1,11 +1,14 @@
-# nand
+# Nought
 
-Exploring a minimal universal language where every finite bitstring is a valid
-program. Our main benchmark is the length of a language's self-interpreter,
+**A binary language whose empty program interprets the language.**
+
+Nought is a universal binary language where every finite bitstring is a valid
+program. This repository explores its design and earlier candidates. Our main
+benchmark is the length of a language's self-interpreter,
 measured in bits, with explicit input framing and a companion measurement of
 the reference implementation.
 
-The current [reflective bitfold construction](REFLECTIVE_FOLD.md) has a **zero-bit
+Nought's [reflective SK bitfold construction](REFLECTIVE_FOLD.md) has a **zero-bit
 native self-interpreter and a 155-bit decoder kernel**, under the original raw-list
 interface. Its ordinary version has a 114-bit kernel and a 1,169-bit native
 self-interpreter. These are distinct measurements, both reported explicitly.
@@ -44,14 +47,16 @@ generated candidates also found nothing below 174 bits in that family, with a na
 and decoding checks for every variant.
 
 ```sh
-python3 functional_candidates.py --run 0010 --input 101101
-python3 functional_candidates.py --run '' --input 101101
+python3 reflective_fold.py --run 00111001110001111111 --input 101
 python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold
 ```
 
+The first command runs Nought's compiled identity program and returns `101`.
+The implementation and artifacts use the existing `reflective_*` filenames.
+
 | Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
-| Reflective bitfold | **0 bits**; 155-bit kernel | [Construction and both size measurements](REFLECTIVE_FOLD.md) |
+| Nought (reflective SK bitfold) | **0 bits**; 155-bit kernel | [Language, construction, and measurements](REFLECTIVE_FOLD.md) |
 | Total functional decoder | **174 bits** | [Contract, provenance, and search results](FUNCTIONAL.md) |
 | Empty-program boundary case | **0 bits**; 215-bit kernel | [Why both measurements matter](RESEARCH.md) |
 | Triage raw-bit interpreter | 987 bits | [Native tree runtime and input contracts](TRIAGE.md) |

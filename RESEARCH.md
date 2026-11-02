@@ -1,4 +1,4 @@
-# Open research direction
+# Nought: open research direction
 
 The goal is a minimal universal binary programming language in which every
 finite bitstring has defined execution. Self-interpreter length is a central
@@ -57,12 +57,12 @@ For comparable lambda-backed candidates, record at least:
 | --- | ---: | ---: |
 | Original functional candidate | 174 bits | 174 bits |
 | Empty-program boundary case | **0 bits** | 215 bits |
-| Reflective SK bitfold | **0 bits** | **155 bits** |
+| Nought (reflective SK bitfold) | **0 bits** | **155 bits** |
 | Ordinary SK bitfold | 1,169 bits | **114 bits** |
 | Ordinary KSK bitfold | 1,035 bits | 123 bits |
 
 The original two points traded off the coordinates. The subsequent
-[reflective bitfold construction](REFLECTIVE_FOLD.md) improves both coordinates
+[Nought construction](REFLECTIVE_FOLD.md) improves both coordinates
 over the original 174/174 point. The ordinary folds have smaller kernels but
 longer native self-interpreters, preserving a nontrivial frontier. A different runtime needs its own
 explicit rules and a measured implementation; Python source bytes are useful

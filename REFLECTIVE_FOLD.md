@@ -1,6 +1,12 @@
-# A smaller kernel and zero-bit self-interpretation
+# Nought: a smaller kernel and zero-bit self-interpretation
 
-The current best reflective construction has a **zero-bit native self-interpreter
+**A binary language whose empty program interprets the language.**
+
+Nought names the reflective SK reverse-fold language described here. The KSK
+construction is a comparison variant. The implementation and artifact filenames
+retain their existing `reflective_*` names.
+
+Nought has a **zero-bit native self-interpreter
 and a 155-bit closed lambda decoder kernel**. Both measurements improve on the
 original functional candidate's 174/174 pair, under the same external raw-list
 interface and the same reference lambda machine. The source language is different:
@@ -15,7 +21,7 @@ The ordinary bitfold kernels also improve without changing their languages:
 | Optimized SK reverse fold | **1,169** | **114** |
 | Earlier KSK reverse fold | 1,339 | 157 |
 | Optimized KSK reverse fold | **1,035** | **123** |
-| Reflective SK reverse fold | **0** | **155** |
+| Nought (reflective SK reverse fold) | **0** | **155** |
 | Reflective KSK reverse fold | 0 | 164 |
 
 The ordinary and reflective variants expose different tradeoffs. A 114-bit kernel
