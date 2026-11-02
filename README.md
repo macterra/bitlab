@@ -7,6 +7,14 @@ combinators by folding bits from right to left. Knot uses compact BCL trees,
 completes missing pieces with K, and ignores bits after the first expression.
 Both give empty source the meaning of their own decoder.
 
+**Nought is a reflective, reverse-scanning dialect of Chris Barker's Jot.**
+See the [Jot definitions and attribution](docs/experiments/bitfold.md#execution-without-a-structured-source-parser).
+**Knot is a reflective, totalized dialect of John Tromp's Binary Combinatory
+Logic (BCL).** See [Tromp's specification, section 3.1](https://tromp.github.io/cl/LC.pdf).
+Our work here comprises the chosen reflection and EOF rules, implementations,
+optimization experiments, proofs, and examples. The language names do not imply
+invention of the underlying computation models or priority for these extensions.
+
 This repository contains their implementations, runnable examples, and the
 experiments that led to them. It uses Python's standard library; run the commands
 below from the repository root.

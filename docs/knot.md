@@ -2,6 +2,12 @@
 
 **A reflective BCL dialect where every bitstring is a program.**
 
+**Knot is a reflective, totalized dialect of John Tromp's Binary Combinatory
+Logic (BCL).** Its compact SK encoding comes from [Tromp's specification, section 3.1](https://tromp.github.io/cl/LC.pdf).
+This dialect adds explicit EOF completion and empty-source reflection. The name
+identifies those choices and their implementation, not a new underlying
+computation model or a claim of priority for these extensions.
+
 Knot preserves BCL's short encoding of every complete SK tree, gives every
 finite bitstring a meaning, and makes the empty program a self-interpreter.
 The name refers to K completing missing pieces and the decoder "tying the knot"

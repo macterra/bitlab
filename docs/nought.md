@@ -2,6 +2,12 @@
 
 **A binary language whose empty program interprets the language.**
 
+**Nought is a reflective, reverse-scanning dialect of Chris Barker's Jot.**
+Its nonempty programs use Jot's construction rules in reverse source order;
+empty source denotes the decoder itself. See the [Jot definitions and attribution](experiments/bitfold.md#execution-without-a-structured-source-parser).
+The name identifies this dialect and its implementation, not a new underlying
+computation model or a claim of priority for reflection or reversed scanning.
+
 Nought names the reflective SK reverse-fold language described here. The KSK
 construction is a comparison variant. The implementation is `languages/nought.py`,
 with saved programs and reports under `artifacts/nought/`.
