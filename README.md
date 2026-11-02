@@ -5,11 +5,19 @@ program. Our main benchmark is the length of a language's self-interpreter,
 measured in bits, with explicit input framing and a companion measurement of
 the reference implementation.
 
-The smallest measured candidate is a [174-bit functional self-interpreter](FUNCTIONAL.md).
+The smallest measured raw-list decoder kernel is the
+[174-bit functional candidate](FUNCTIONAL.md).
 It gives every finite bitstring a defined lambda-calculus computation and
 completes nested self-interpretation. It is a six-bit adapter around Tromp's
 168-bit parser, **not a new smallest-interpreter record**. Its input contract is
 explicit and differs from a single-stream universal machine.
+
+The [open research direction](RESEARCH.md) now allows changes to architecture,
+representations, and interfaces. Its first benchmark diagnostic constructs a
+**zero-bit self-interpreter with a 215-bit decoder kernel**: empty source denotes
+the decoder itself. This reaches the literal program-length floor while making
+the language definition larger, so we track both measurements instead of
+treating self-interpreter length alone as language simplicity.
 
 The [bit-by-bit combinator experiment](BITFOLD.md) tested a different
 execution rule with no structured source parser. Its best emitted self-interpreter
@@ -29,12 +37,13 @@ and decoding checks for every variant.
 ```sh
 python3 functional_candidates.py --run 0010 --input 101101
 python3 functional_candidates.py --run '' --input 101101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter
 ```
 
 | Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
 | Total functional decoder | **174 bits** | [Contract, provenance, and search results](FUNCTIONAL.md) |
+| Empty-program boundary case | **0 bits**; 215-bit kernel | [Why both measurements matter](RESEARCH.md) |
 | Best bit-by-bit combinator variant | 1,339 bits | [Certificates and bounded search](BITFOLD.md) |
 | Compact binary addresses | **25,260 bits** | [Specification and comparison](COMPACT_TAPE.md) |
 | Original unary addresses | 741,267 bits | [Language](NAND_TAPE.md), [self-interpreter](SELF_INTERPRETER.md) |
@@ -54,7 +63,7 @@ Regenerate the functional artifact and its measurement report:
 python3 functional_candidates.py --search --emit functional_self.blc --report functional_metrics.json
 ```
 
-The 58 tests cover differential execution, exhaustive short sources, large tape
+The 63 tests cover differential execution, exhaustive short sources, large tape
 branch addresses, and reproducible artifacts. The functional suite completes two
 nested interpretation levels; the tape suites check bounded self-application
 prefixes. The functional search found no reduction below 174 bits within its
