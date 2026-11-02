@@ -1,11 +1,18 @@
-# Totalized BCL: compact programs with no invalid bitstrings
+# Knot
 
-This candidate preserves BCL's short encoding of every complete SK tree, gives
-every finite bitstring a meaning, and optionally makes the empty program a
-self-interpreter. It is a separate language experiment; Nought's reverse-fold
-definition remains unchanged.
+**A reflective BCL dialect where every bitstring is a program.**
 
-| Measurement | Nought | Reflective totalized BCL |
+Knot preserves BCL's short encoding of every complete SK tree, gives every
+finite bitstring a meaning, and makes the empty program a self-interpreter.
+The name refers to K completing missing pieces and the decoder "tying the knot"
+through self-reference. It names our completion and reflection rules, built on
+BCL's existing computation model.
+
+Knot is the reflective dialect; the ordinary totalized BCL decoder remains a
+comparison variant. Nought names the separate reverse-fold language. Existing
+`total_bcl_*` filenames and commands are retained.
+
+| Measurement | Nought | Knot |
 | --- | ---: | ---: |
 | Rule 30 guest program | 1,979 bits | **809 bits** |
 | Decoder kernel in BLC | **155 bits** | 261 bits |
@@ -15,7 +22,7 @@ definition remains unchanged.
 
 The 809-bit Rule 30 program computes the same five demonstrated generations as
 the existing Nought program. These are guest sizes, excluding the separate
-decoder, input, and host display loop. The new candidate achieves compact guest
+decoder, input, and host display loop. Knot achieves compact guest
 programs and total syntax, but does not improve every measurement: its kernel
 is 106 bits larger. Neither implementation is claimed minimal.
 
@@ -47,7 +54,7 @@ consumes a bit, and an empty recursive call supplies a leaf without recursing
 again. Consequently there are no source syntax errors. Evaluation of the
 resulting combinator can still diverge or return a non-bit-list value.
 
-The reflective decoder changes only the empty source:
+Knot's reflective decoder changes only the empty source:
 
 ```text
 R []     = R

@@ -1,8 +1,9 @@
-"""Totalized BCL with EOF completion and optional empty-source reflection.
+"""Knot: a reflective BCL dialect where every bitstring is a program.
 
 00 = K, 01 = S, 1 <function> <argument> = application. Missing terms or
 missing atom selector bits default to K. Bits after the first term are unused.
-The reflective variant reserves empty source for its own decoder.
+Knot reserves empty source for its own decoder. The ordinary, nonreflective
+decoder is retained as a comparison. Implementation filenames remain total_bcl_*.
 """
 
 import argparse
@@ -79,6 +80,7 @@ def report():
     from rule30 import step_function
 
     result = dict(build()[2])
+    result["language"] = "Knot"
     result["rule30_program"] = compile_program(step_function())
     result["rule30_bits"] = len(result["rule30_program"])
     result["contract"] = "Separate raw program/input boolean-pair lists; EOF defaults to K; suffix unused; empty source reflects"
@@ -111,7 +113,7 @@ def main():
         args.emit.write_text("")
     if args.rule30:
         args.rule30.write_text(result["rule30_program"])
-    summary = {key: result[key] for key in ("ordinary_kernel_bits", "reflective_kernel_bits",
+    summary = {key: result[key] for key in ("language", "ordinary_kernel_bits", "reflective_kernel_bits",
                                            "ordinary_self_bits", "reflective_self_bits", "rule30_bits")}
     program = args.run_file.read_text() if args.run_file else args.run
     if program is not None:

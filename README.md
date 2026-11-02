@@ -1,9 +1,9 @@
-# Nought
+# Nought and Knot
 
-**A binary language whose empty program interprets the language.**
+**Binary languages whose empty programs interpret their own languages.**
 
-Nought is a universal binary language where every finite bitstring is a valid
-program. This repository explores its design and earlier candidates. Our main
+Nought and Knot are universal binary languages where every finite bitstring is a
+valid program. This repository explores their designs and earlier candidates. Our main
 benchmark is the length of a language's self-interpreter,
 measured in bits, with explicit input framing and a companion measurement of
 the reference implementation.
@@ -18,7 +18,7 @@ applies the same optimizations to left-to-right Jot: its ordinary kernel reaches
 127 bits and its reflective kernel 168 bits. Nought's reverse direction remains
 13 bits smaller in this bounded search.
 
-The [totalized BCL experiment](TOTAL_BCL.md) preserves BCL's compact SK encoding
+[Knot](TOTAL_BCL.md) is a reflective BCL dialect that preserves BCL's compact SK encoding
 while accepting every finite bitstring: missing terms default to K and trailing
 bits after the first expression are unused. With empty-program reflection it
 has a zero-bit self-interpreter and a 261-bit kernel. Its Rule 30 program is
@@ -72,6 +72,7 @@ computes successive cellular-automaton rows with fixed width and zero boundaries
 | Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
 | Nought (reflective SK bitfold) | **0 bits**; 155-bit kernel | [Language, construction, and measurements](REFLECTIVE_FOLD.md) |
+| Knot (reflective totalized BCL) | **0 bits**; 261-bit kernel | [Language, compact programs, and measurements](TOTAL_BCL.md) |
 | Total functional decoder | **174 bits** | [Contract, provenance, and search results](FUNCTIONAL.md) |
 | Empty-program boundary case | **0 bits**; 215-bit kernel | [Why both measurements matter](RESEARCH.md) |
 | Triage raw-bit interpreter | 987 bits | [Native tree runtime and input contracts](TRIAGE.md) |
