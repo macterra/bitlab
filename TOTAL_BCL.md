@@ -21,7 +21,10 @@ comparison variant. Nought names the separate reverse-fold language. Existing
 | Suffix after a complete SK expression | Whole source is folded | Unused |
 
 The 809-bit Rule 30 program computes the same five demonstrated generations as
-the existing Nought program. These are guest sizes, excluding the separate
+the existing Nought program when invoked once per update. The separate
+[2,042-bit history program](KNOT_RULE30.md) moves the generation loop into Knot
+and returns the entire history in one invocation: run `python3 knot_rule30.py`.
+These are guest sizes, excluding the separate
 decoder, input, and host display loop. Knot achieves compact guest
 programs and total syntax, but does not improve every measurement: its kernel
 is 106 bits larger. Neither implementation is claimed minimal.

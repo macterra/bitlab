@@ -1,0 +1,21 @@
+{
+  "language": "Knot",
+  "program_bits": 2042,
+  "program_sha256": "2a5cf3c8e8de60cfcf96523f91a7a1d531e82437c79d0d5f87e416ad504dcb7e",
+  "lambda_function_bits": 470,
+  "kernel_bits": 261,
+  "input_format": "1^n 0 row; n updates; fixed width; zero boundaries",
+  "output_format": "initial row followed by n successor rows, concatenated",
+  "source_files": [
+    "functional.py",
+    "functional_candidates.py",
+    "functional_rewrites.py",
+    "bitfold.py",
+    "reflective_fold.py",
+    "total_bcl.py",
+    "rule30.py",
+    "knot_rule30.py"
+  ],
+  "source_bytes": 58479,
+  "source_sha256": "8f10f2bcba1c914cba08540b6f08bfcc0b15e104e5c2b444c2e34d376664e8c7"
+}

@@ -5,6 +5,11 @@ an input row to its next Rule 30 generation. [`rule30.py`](rule30.py) constructs
 the function, compiles it, and runs it through Nought's decoder and the reference
 lambda machine.
 
+For iteration inside a guest program, use the [Knot history implementation](KNOT_RULE30.md):
+`python3 knot_rule30.py` computes the initial row and five successor rows in one
+Knot invocation. The Nought example below uses Python to repeat its
+single-generation program.
+
 Run the five-generation example:
 
 ```sh

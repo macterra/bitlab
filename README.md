@@ -59,7 +59,7 @@ and decoding checks for every variant.
 
 ```sh
 python3 reflective_fold.py --run 00111001110001111111 --input 101
-python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold test_direction_search test_rule30 test_total_bcl
+python3 -m unittest -v test_nand_tape test_self_host test_compact_tape test_functional test_bitfold test_functional_rewrites test_encoding_search test_empty_interpreter test_triage test_reflective_fold test_direction_search test_rule30 test_total_bcl test_knot_rule30
 ```
 
 The first command runs Nought's compiled identity program and returns `101`.
@@ -68,6 +68,11 @@ The implementation and artifacts use the existing `reflective_*` filenames.
 For a complete bitstring-to-bitstring application, run `python3 rule30.py`.
 The [Rule 30 example](RULE30.md) compiles to a 1,979-bit Nought program and
 computes successive cellular-automaton rows with fixed width and zero boundaries.
+
+To run the generation loop inside Knot itself, use `python3 knot_rule30.py`.
+The [2,042-bit Knot history program](KNOT_RULE30.md) takes a count and initial
+row, then returns all rows in one invocation. Python only frames the input and
+formats the output into lines.
 
 | Candidate | Self-interpreter | Documentation |
 | --- | ---: | --- |
